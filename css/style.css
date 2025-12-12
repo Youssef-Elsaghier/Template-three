@@ -1,0 +1,554 @@
+/* Start Main Variables */
+:root {
+  --main-color-1: rgb(33, 150, 243);
+  --main-color-2: #fafafa;
+  --main-color-3: #1787e0;
+  --main-color-4: #ddd;
+  --main-transition: 0.3s;
+}
+/* End Main Variables */
+
+/* Start Global Rules */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+@media (max-width: 635px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.main-text {
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  width: fit-content;
+  height: 60px;
+  padding: 20px;
+  margin: 0 auto 100px;
+  position: relative;
+}
+.main-text::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--main-color-1);
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  z-index: -1;
+  translate: 0 -50%;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.main-text::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--main-color-1);
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  z-index: -1;
+  translate: 0 -50%;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.main-text:hover {
+  color: white;
+  transition: 0.3s 1s;
+  -webkit-transition: 0.3s 1s;
+  -moz-transition: 0.3s 1s;
+  -ms-transition: 0.3s 1s;
+  -o-transition: 0.3s 1s;
+}
+.main-text:hover::before,
+.main-text:hover::after {
+  width: 50%;
+  height: 100%;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  transition: 1s;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+}
+.main-text:hover::before {
+  left: 0;
+}
+.main-text:hover::after {
+  right: 0;
+}
+.main-text h1 {
+  margin: 0;
+}
+/* End Global Rules */
+/* Start Header */
+header {
+  background-color: white;
+  box-shadow: 0px 0 10px var(--main-color-4);
+  position: relative;
+}
+header .container {
+  display: flex;
+  flex-wrap: wrap; /* responsive */
+  justify-content: space-between;
+  align-items: center;
+  position: relative; /* We will use it during creating mega menu */
+}
+
+header .container .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-color-1);
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: capitalize;
+  height: 72px; /* to make the header's height stable */
+}
+@media (max-width: 767px) {
+  header .container .logo {
+    width: 100%;
+    height: 50px;
+  }
+}
+header .container .main-nav {
+  display: flex;
+}
+@media (max-width: 767px) {
+  header .container .main-nav {
+    margin: 0 auto;
+  }
+}
+header .container .main-nav > li > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 20px;
+  text-transform: capitalize;
+  /* the padding and height properties to make fill for (a) element*/
+  padding: 0 30px;
+  height: 72px;
+  position: relative;
+  transition: var(--main-transition);
+  -webkit-transition: var(--main-transition);
+  -moz-transition: var(--main-transition);
+  -ms-transition: var(--main-transition);
+  -o-transition: var(--main-transition);
+}
+@media (max-width: 767px) {
+  header .container .main-nav > li > a {
+    font-size: 14px;
+    padding: 10px;
+    height: 40px;
+  }
+}
+header .container .main-nav > li > a::before {
+  content: "";
+  background-color: var(--main-color-1);
+  width: 0;
+  height: 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: var(--main-transition);
+  -webkit-transition: var(--main-transition);
+  -moz-transition: var(--main-transition);
+  -ms-transition: var(--main-transition);
+  -o-transition: var(--main-transition);
+}
+
+header .container .main-nav > li > a:hover {
+  background-color: var(--main-color-2);
+  color: var(--main-color-1);
+}
+header .container .main-nav > li > a:hover::before {
+  width: 100%;
+}
+header .container .main-nav li:last-child:hover .mega-menu {
+  z-index: 100;
+  opacity: 1;
+  top: calc(100% + 1px);
+}
+/* Start Mega Menu */
+.mega-menu {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background-color: white;
+  border-bottom: 3px solid var(--main-color-1);
+  padding: 30px;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: calc(100% + 50px);
+  opacity: 0;
+  transition: opacity var(--main-transition), top var(--main-transition);
+  -webkit-transition: opacity var(--main-transition), top var(--main-transition);
+  -moz-transition: opacity var(--main-transition), top var(--main-transition);
+  -ms-transition: opacity var(--main-transition), top var(--main-transition);
+  -o-transition: opacity var(--main-transition), top var(--main-transition);
+}
+@media (max-width: 767px) {
+  .mega-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+}
+@media (max-width: 992px) {
+  .mega-menu {
+    gap: 0;
+  }
+}
+.mega-menu .image img {
+  max-width: 100%;
+}
+@media (max-width: 992px) {
+  .mega-menu .image {
+    display: none;
+  }
+}
+.mega-menu .links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+@media (max-width: 767px) {
+  .mega-menu .links {
+    width: 100%;
+  }
+}
+@media (max-width: 992px) {
+  .mega-menu .links {
+    flex: 1;
+  }
+}
+.mega-menu .links li {
+  padding: 10px 10px 15px;
+  min-width: 300px;
+  position: relative;
+}
+@media (max-width: 767px) {
+  .mega-menu .links li {
+    width: 100%;
+  }
+}
+.mega-menu .links li:not(:last-child) {
+  border-bottom: 1px solid var(--main-color-4);
+}
+@media (max-width: 767px) {
+  .mega-menu .links:first-of-type li:last-child {
+    border-bottom: 1px solid var(--main-color-4);
+  }
+}
+.mega-menu .links > li::before {
+  content: "";
+  display: block;
+  background-color: var(--main-color-2);
+  width: 0%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  transition: var(--main-transition);
+  -webkit-transition: var(--main-transition);
+  -moz-transition: var(--main-transition);
+  -ms-transition: var(--main-transition);
+  -o-transition: var(--main-transition);
+}
+.mega-menu .links > li:hover::before {
+  width: 100%;
+}
+.mega-menu .links li a {
+  color: var(--main-color-1);
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.mega-menu .links li a i {
+  margin-right: 10px;
+}
+/* End Mega Menu */
+
+/* End Header */
+/* Start Landing */
+.landing {
+  position: relative;
+}
+.landing::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: #ececec;
+  width: 100%;
+  height: 100%;
+  transform-origin: top left;
+  transform: skewY(-6deg);
+  -webkit-transform: skewY(-6deg);
+  -moz-transform: skewY(-6deg);
+  -ms-transform: skewY(-6deg);
+  -o-transform: skewY(-6deg);
+}
+.landing .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 72px);
+  padding-bottom: 120px;
+}
+.landing .container .text {
+  flex: 1;
+  text-transform: capitalize;
+}
+@media (max-width: 992px) {
+  .landing .container .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+.landing .container .text h1 {
+  font-weight: bold;
+  letter-spacing: -3px;
+  font-size: 40px;
+  margin-bottom: 5px;
+}
+.landing .container .text p {
+  color: #666;
+  font-size: 23px;
+  line-height: 1.7;
+  max-width: 500px;
+}
+@media (max-width: 767px) {
+  .landing .container .text h1 {
+    font-size: 30px;
+  }
+  .landing .container .text p {
+    font-size: 18px;
+  }
+}
+.landing .container .image {
+  flex: 1;
+}
+@media (max-width: 992px) {
+  .landing .container .image {
+    display: none;
+  }
+}
+.landing .container .image img {
+  width: 600px;
+  animation: up-down 2.7s linear infinite alternate;
+  -webkit-animation: up-down 2.7s linear infinite alternate;
+}
+.landing .go-down {
+  color: var(--main-color-1);
+  font-size: 25px;
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  bottom: 25px;
+  translate: -50% 0;
+  transition: var(--main-transition);
+  animation: go-down 1.5s infinite;
+  -webkit-animation: go-down 1.5s infinite;
+  -webkit-transition: var(--main-transition);
+  -moz-transition: var(--main-transition);
+  -ms-transition: var(--main-transition);
+  -o-transition: var(--main-transition);
+}
+.landing .go-down:hover {
+  color: var(--main-color-3);
+}
+/* End Landing */
+
+/* Start Articles */
+.articles {
+  padding: 100px 0;
+}
+.articles .container {
+  display: grid;
+  grid-template-rows: repeat(2, max(calc((100% - 40px) / 2)));
+  grid-template-columns: repeat(4, max(calc((100% - 120px) / 4)));
+  gap: 40px;
+}
+@media (max-width: 1199px) {
+  .articles .container {
+    grid-template-rows: repeat(3, max(calc((100% - 40px) / 3)));
+    grid-template-columns: repeat(3, max(calc((100% - 80px) / 3)));
+  }
+}
+@media (max-width: 992px) {
+  .articles .container {
+    grid-template-rows: repeat(4, max(calc((100% - 40px) / 4)));
+    grid-template-columns: repeat(2, max(calc((100% - 40px) / 2)));
+  }
+}
+@media (max-width: 570px) {
+  .articles .container {
+    grid-template-rows: repeat(8, max(calc((100% - 40px) / 8)));
+    grid-template-columns: repeat(1, auto);
+  }
+}
+.articles .container .article {
+  text-transform: capitalize;
+  background-color: white;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+}
+.articles .container .article:hover {
+  translate: 0 -15px;
+}
+.articles .container .article:hover .text-parent {
+  box-shadow: 0 0 10px #aaa;
+}
+.articles .container .article:hover .foot i {
+  animation: right-left 0.7s linear infinite;
+  -webkit-animation: right-left 0.7s linear infinite;
+}
+.articles .container .article .image img {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.articles .container .article .text-parent {
+  box-shadow: 0 0 10px #ddd;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+.articles .container .article .text-parent .text-child {
+  border-bottom: 1px solid var(--main-color-4);
+}
+.articles .container .article .text {
+  padding: 20px 20px 0;
+}
+.articles .container .article .text p {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 15px 0;
+}
+.articles .container .article .foot {
+  color: var(--main-color-1);
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px;
+}
+.articles .container .article .foot a {
+  color: var(--main-color-1);
+  font-size: 15px;
+}
+
+/* End Articles */
+
+/* Start Animation */
+@keyframes up-down {
+  from {
+    transform: translate(0px, 20px);
+    -webkit-transform: translate(0px, 20px);
+    -moz-transform: translate(0px, 20px);
+    -ms-transform: translate(0px, 20px);
+    -o-transform: translate(0px, 20px);
+  }
+  to {
+    transform: translate(0px, -50px);
+    -webkit-transform: translate(0px, -50px);
+    -moz-transform: translate(0px, -50px);
+    -ms-transform: translate(0px, -50px);
+    -o-transform: translate(0px, -50px);
+  }
+}
+@keyframes go-down {
+  0%,
+  10%,
+  20%,
+  50%,
+  80%,
+  100% {
+    bottom: 25px;
+  }
+  40%,
+  60% {
+    bottom: 40px;
+  }
+}
+@keyframes right-left {
+  0% {
+    translate: 0 0;
+  }
+  100% {
+    translate: 10px 0;
+  }
+}
+/* End Animation */
